@@ -1,0 +1,10 @@
+name: Excursions
+form: $/techxursion/techxursion/models/excursion/fields.yaml
+modelClass: Techxursion\Techxursion\Models\Excursion
+defaultRedirect: techxursion/techxursion/excursions
+create:
+    redirect: 'techxursion/techxursion/excursions/update/:id'
+    redirectClose: techxursion/techxursion/excursions
+update:
+    redirect: techxursion/techxursion/excursions
+    redirectClose: techxursion/techxursion/excursions

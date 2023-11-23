@@ -1,0 +1,25 @@
+fields:
+    name:
+        label: Name
+        span: auto
+        type: text
+    description:
+        label: Description
+        span: auto
+        type: textarea
+    city:
+        label: Город
+        span: auto
+        nameFrom: name
+        descriptionFrom: description
+        type: relation
+    model:
+        label: '3Д Модель'
+        span: auto
+        mode: file
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        fileTypes: 'glb,obj,3ds'
+        type: fileupload

@@ -1,0 +1,30 @@
+itle = "Чат"
+url = "/video"
+layout = "default"
+==
+<?
+    function onHandleForm()
+    {
+        $input = input('name');
+        $input2 = input('img');
+        return ["#download"=>'<iframe id="downloadSrc" style="display:none;" src="/video.mp4?name='.$input.'&src='.$input2.'"></iframe>'];
+    }
+?>
+==
+<div id="download"></div>
+
+<section class="chat">
+    <div class="container">
+    <form data-request="onHandleForm" data-request-success="console.log(data)">
+        <label>
+            Текст
+            <input type="text" name="name" value="Test">
+        </label>
+        <label>
+            Изображение
+            <input type="text" name="img" value="https://techxursion.ru/themes/techxursion/assets/images/Tech%20Xursion.svg">
+        </label>
+        <input type="submit">
+    </form>
+    </div>
+</section>

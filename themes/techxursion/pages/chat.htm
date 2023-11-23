@@ -1,0 +1,70 @@
+itle = "Чат"
+url = "/chat"
+layout = "default"
+==
+<section class="chat">
+<div class="container">
+        <h2><span>Чат</span></h1>
+        <div class="chatcontainer">
+        <pre id="messages" style="width: 90%; margin-left: 5%; height: 200px; overflow: scroll">
+        </pre>
+        <input type="text" id="messageBox" placeholder="Введите сообщение" 
+            style="display: block; width: 90%; margin-bottom: 10px; margin-left: 5%; padding: 10px;" />
+            
+        </div>
+        <button id="send" title="Отправить сообщение" style="width: 90%; margin-left: 5%; height: 30px;">
+            Отправить сообщение
+        </button>
+
+        <script>
+            if ("WebSocket" in window) {
+                const sendBtn = document.querySelector('#send');
+                const messages = document.querySelector('#messages');
+                const messageBox = document.querySelector('#messageBox');
+                
+                function showMessage(message) {
+                    messages.textContent += `\n${message}`;
+                    messages.scrollTop = messages.scrollHeight;
+                }
+
+                let ws = new WebSocket("wss://techxursion.ru/ws");
+
+                ws.onopen = function() {
+                    console.log("Подключено к серверу"); 
+                };
+
+                sendBtn.onclick = function() {
+                    if (ws) {
+                        ws.send(messageBox.value);
+                        showMessage(`Я: ${messageBox.value}`);
+                        document.querySelector('#messageBox').value = '';
+                    } else {
+                        alert("Ошибка: Нет подключения... Обновите страницу, чтобы попробовать снова!");
+                    }
+                }
+
+                ws.onmessage = function ({data}) { 
+                    var obj = JSON.parse(data);
+                    showMessage(`Аноним ${obj.from_id}: ${obj.message}`);
+                };
+
+                ws.onclose = function() { 
+                    ws = null;
+                    alert("Подключение закрылось... Обновите страницу, чтобы попробовать снова!"); 
+                };
+
+                var input = document.getElementById("messageBox");
+
+                input.addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    document.querySelector('#send').click();
+                }
+});
+
+            } else {
+                alert("Чат не поддерживается вашим браузером!");
+            }
+        </script>
+        </div>
+        </section>

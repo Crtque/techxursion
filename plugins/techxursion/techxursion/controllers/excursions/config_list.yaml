@@ -1,0 +1,12 @@
+list: $/techxursion/techxursion/models/excursion/columns.yaml
+modelClass: Techxursion\Techxursion\Models\Excursion
+title: Excursions
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'techxursion/techxursion/excursions/update/:id'

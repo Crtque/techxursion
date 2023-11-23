@@ -1,0 +1,9 @@
+name: techxursion
+description: ''
+author: 'Admin Person'
+homepage: 'https://techxursion.ru/'
+code: techxursion
+form:
+    fields:
+        googleanalytics_id:
+            label: 'Google Analytics ID'

@@ -1,0 +1,10 @@
+name: Cities
+form: $/techxursion/techxursion/models/city/fields.yaml
+modelClass: Techxursion\Techxursion\Models\City
+defaultRedirect: techxursion/techxursion/cities
+create:
+    redirect: 'techxursion/techxursion/cities/update/:id'
+    redirectClose: techxursion/techxursion/cities
+update:
+    redirect: techxursion/techxursion/cities
+    redirectClose: techxursion/techxursion/cities

@@ -1,0 +1,39 @@
+title = "Home"
+url = "/excursions"
+layout = "default"
+==
+<?
+    function onStart() {
+        $this['cities'] = Techxursion\Techxursion\Models\City::all();
+    }
+?>
+==
+<section class="middle-title">
+    <div class="container">
+        <h1>Виртуальные экскурсии</h1>
+    </div>
+</section>
+<section class="about about--right-image">
+    <div class="container">
+        {% for city in cities %}
+        <div class="about--wrapper">
+            <div class="about__text">
+                <div class="about__text__up">
+                    <div class="about__title">
+                     {{ city.name }}
+                    </div>
+                    <div class="about__subtitle">
+                    {{ city.description }}   </div>
+                </div>
+                <div class="about__text__bottom">
+                    <a href="{{'excursion-detail'|page({id:city.id})}}" class="button-orange">Хочу посмотреть ></a>
+                </div>
+            </div>
+
+            <div class="items">
+                <img src=" {{ city.pictures[0].path }}" style="z-index:5">
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>

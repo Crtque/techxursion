@@ -1,0 +1,129 @@
+title = "Home"
+url = "/excursion/:id"
+layout = "default"
+==
+<?
+function onStart()
+{
+
+    $this['city'] = Techxursion\Techxursion\Models\City::find($this->param('id'));
+}
+?>
+==
+<section class="middle-title">
+    <div class="container">
+        <h1>Виртуальные экскурсии</h1>
+    </div>
+</section>
+<section class="about about--transparent about--right-image">
+    <div class="container">
+        <div class="about--wrapper">
+            <div class="about__text">
+                <div class="about__text__up">
+                    <div class="about__title">
+                        Технопарк {{ city.name }}
+                    </div>
+                    <div class="about__subtitle">
+                        {{ city.description }}
+                    </div>
+                </div>
+                <div class="about__text__bottom">
+                </div>
+            </div>
+
+            <div class="items">
+                <img src=" {{ city.pictures[0].path }}" style="z-index:5">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="three">
+    <div class="container">
+        <div class="three-wrapper">
+            <script type="importmap">
+                {
+			"imports": {
+				"three": "{{'/themes/techxursion/assets/threejs/build/three.module.js'}}",
+				"three/addons/": "{{'/themes/techxursion/assets/threejs/examples/jsm/'}}"
+			}
+		}
+		</script>
+            <div class="contthree"></div>
+            <script type="module">
+                import * as THREE from 'three';
+                import {
+                    OrbitControls
+                } from 'three/addons/controls/OrbitControls.js';
+                import {
+                    TransformControls
+                } from 'three/addons/controls/TransformControls.js';
+                import {
+                    GLTFLoader
+                } from 'three/addons/loaders/GLTFLoader.js';
+                import {
+                    DRACOLoader
+                } from 'three/addons/loaders/DRACOLoader.js';
+                import {
+                    CCDIKSolver,
+                    CCDIKHelper
+                } from 'three/addons/animation/CCDIKSolver.js';
+                import Stats from 'three/addons/libs/stats.module.js';
+                import {
+                    GUI
+                } from 'three/addons/libs/lil-gui.module.min.js';
+
+
+                const scene = new THREE.Scene();
+
+                // Create camera
+                const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                camera.position.z = 5;
+
+                // Create renderer
+                const renderer = new THREE.WebGLRenderer();
+                document.querySelector('.contthree').appendChild(renderer.domElement);
+
+                // Create orbit controls
+                const controls = new OrbitControls(camera, renderer.domElement);
+                renderer.setSize(document.querySelector('.three-wrapper').clientWidth - 50, 800);
+                // Add bright ambient light
+                const ambientLight = new THREE.AmbientLight(0x404040, 40); // Increase intensity
+                scene.add(ambientLight);
+
+                // Load GLB model
+                const loader = new GLTFLoader();
+                loader.load('{{ city.excursions[0].model.path}}', (gltf) => {
+                    const model = gltf.scene;
+                    scene.add(model);
+
+                    // Update the camera position based on the bounding box of the model
+                    const box = new THREE.Box3().setFromObject(model);
+                    const center = box.getCenter(new THREE.Vector3());
+                    controls.target.copy(center);
+                    controls.update();
+                   
+                });
+
+             
+
+
+
+                // Animation loop
+                const animate = () => {
+                    requestAnimationFrame(animate);
+
+                    // Update controls
+                    controls.update();
+
+                    // Handle keyboard input for camera movement
+                    const speed = 0.1;
+
+                    renderer.render(scene, camera);
+                };
+
+                animate();
+            </script>
+        </div>
+    </div>
+</section>

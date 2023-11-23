@@ -1,0 +1,11 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table techxursion_techxursion_cities'
+    - builder_table_create_techxursion_techxursion_cities.php
+1.0.3:
+    - 'Created table techxursion_techxursion_excursions'
+    - builder_table_create_techxursion_techxursion_excursions.php
+1.0.4:
+    - 'Updated table techxursion_techxursion_excursions'
+    - builder_table_update_techxursion_techxursion_excursions.php

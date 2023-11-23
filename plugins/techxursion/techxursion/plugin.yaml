@@ -1,0 +1,15 @@
+plugin:
+    name: 'techxursion.techxursion::lang.plugin.name'
+    description: 'techxursion.techxursion::lang.plugin.description'
+    author: Techxursion
+    icon: wn-icon-adjust
+    replaces: {  }
+navigation:
+    cities:
+        label: Города
+        url: techxursion/techxursion/cities
+        icon: icon-adjust
+    excursions:
+        label: Экскурсии
+        url: techxursion/techxursion/excursions
+        icon: icon-life-ring
