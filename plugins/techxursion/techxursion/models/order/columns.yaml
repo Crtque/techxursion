@@ -1,0 +1,22 @@
+columns:
+    id:
+        label: id
+        type: number
+    name:
+        label: name
+        type: text
+    number:
+        label: number
+        type: text
+    email:
+        label: email
+        type: text
+    visitors_count:
+        label: visitors_count
+        type: number
+    park:
+        label: park
+        type: text
+    date:
+        label: date
+        type: text

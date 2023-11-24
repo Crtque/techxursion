@@ -9,3 +9,6 @@
 1.0.4:
     - 'Updated table techxursion_techxursion_excursions'
     - builder_table_update_techxursion_techxursion_excursions.php
+1.0.5:
+    - 'Created table techxursion_techxursion_orders'
+    - builder_table_create_techxursion_techxursion_orders.php

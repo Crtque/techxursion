@@ -13,3 +13,7 @@ navigation:
         label: Экскурсии
         url: techxursion/techxursion/excursions
         icon: icon-life-ring
+    orders:
+        label: Заявки
+        url: techxursion/techxursion/orders
+        icon: icon-life-ring

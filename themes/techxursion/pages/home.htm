@@ -2,6 +2,27 @@ title = "Home"
 url = "/"
 layout = "default"
 ==
+<?
+    function onHandleForm() {
+        $name = input("name");
+        $phone = input("phone");
+        $email = input("email");
+        $visitors = input("visitors");
+        $park = input("park");
+        $date = input("date");
+
+        $order = new \Techxursion\Techxursion\Models\Order;
+        $order->name = $name;
+        $order->number = $phone;
+        $order->email = $email;
+        $order->visitors_count = $visitors;
+        $order->park = $park;
+        $order->date = $date;
+        $order->save();
+        return ["#formazapisi"=>"Ваша заявка отправлена"];
+    }
+?>
+==
 <section class="about">
     <div class="container">
         <div class="about--wrapper">
@@ -56,10 +77,26 @@ layout = "default"
 
 <section class="formcursion">
     <div class="container">
-        <div class="formcursion__tile">
-            <div class="formcursion_text">ЗАПИСАТЬСЯ НА ЭКСКУРСИЮ</div>
-            <img src="{{'assets/images/ЛОГО3.svg'|theme}}">
-            
+        
+            <div class="formcursion__tile">
+            <div class="whitebox">
+                <div class="formcursion_text">ЗАПИСАТЬСЯ НА ЭКСКУРСИЮ</div>
+                <img src="{{'assets/images/ЛОГО3.svg'|theme}}">
+
+            </div>
+            <div class="formazapisi">
+            <img src="{{'assets/images/Union.svg'|theme}}">
+            <form id="formazapisi"  data-request="onHandleForm" data-request-success="console.log(data)">
+                <input type="text" placeholder="ФИО" name="name">
+                <input type="text" placeholder="Телефон" name="phone">
+                <input type="text" placeholder="Email" name="email">
+                <input type="text" placeholder="Количество посетителей" name="visitors">
+                <input type="text" placeholder="Технопарк" name="park">
+                <input type="date" placeholder="дд.мм.гг" name="date">
+                <input type="submit" class="submitbutton" value="Подать заявку  ">
+            </form>
+            </div>
+            </div>
         </div>
     </div>
 </section>

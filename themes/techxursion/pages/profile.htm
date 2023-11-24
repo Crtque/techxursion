@@ -1,0 +1,23 @@
+title = "Home"
+url = "/profile"
+layout = "default"
+[account]
+==
+<div class="container">
+  <div class="profilecontainer">
+  <div class="personname">
+    <h1>{{ user.name }}<h1>
+    <h2>{{ user.email }}</h2>
+  </div>
+  <div class="line"></div>
+  <div class="stat">Мои экскурсии</div>
+  <div class="line2"></div>
+  <div class="settings">Настройки</div>
+  <div class="line2"></div>
+  <div class ="diarybutton">
+    <a data-request="onLogout"><button class="logout">Выйти</button></a>
+  </div>
+  </div>
+  <div style="height:200px;"></div>
+</div>
+{% if not user %}   {% partial 'redirect' url="/" %} {% endif %}

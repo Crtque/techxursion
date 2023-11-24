@@ -1,0 +1,10 @@
+name: Orders
+form: $/techxursion/techxursion/models/order/fields.yaml
+modelClass: Techxursion\Techxursion\Models\Order
+defaultRedirect: techxursion/techxursion/orders
+create:
+    redirect: 'techxursion/techxursion/orders/update/:id'
+    redirectClose: techxursion/techxursion/orders
+update:
+    redirect: techxursion/techxursion/orders
+    redirectClose: techxursion/techxursion/orders

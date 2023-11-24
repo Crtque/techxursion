@@ -1,0 +1,35 @@
+title = "Home"
+url = "/login"
+layout = "default"
+
+[account]
+redirect="home"
+==
+<div class="container">
+  <div class="parent">
+    {% if not user %}
+    <h1>Войдите в ваш аккаунт</h1>
+    {{ form_ajax('onSignin') }}
+        <input
+            name="login"
+            type="text"
+            placeholder="Ваш E-mail"
+            class="form-control"
+            id="userSigninLogin" />
+        <input
+            placeholder="Пароль"
+            name="password"
+            type="password"
+            class="form-control"
+            id="userSigninPassword"/>
+        <input name="remember" type="hidden" value="1">
+        <div class="forgot">Забыли пароль?</div>
+        <a href="{{'register'|page}}">Зарегистрироваться</a>
+        <button type="submit" class="enter">Войти</button>
+      {{ form_close() }}
+      {% else %}
+        {% partial 'redirect' url="/" %}
+      {% endif %}
+  </div>
+ 
+</div>

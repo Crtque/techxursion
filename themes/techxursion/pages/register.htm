@@ -1,0 +1,44 @@
+title = "Home"
+url = "/register"
+layout = "default"
+[account]
+==
+<div class="container">
+  <div class="parent">
+    {% if not user %}
+    <h1>Зарегистрируйся и получи доступ ко всем возможностям приложения</h1>
+    
+    {{ form_ajax('onRegister') }}
+      <input
+          name="name"
+          type="text"
+          class="form-control"
+          id="registerName"
+          placeholder="Ваше имя" />
+
+      <input
+          name="email"
+          type="email"
+          class="form-control"
+          id="registerEmail"
+          placeholder="Ваш e-mail" />
+
+      <input
+          name="password"
+          type="password"
+          class="form-control"
+          id="registerPassword"
+          placeholder="Пароль" />
+
+      <button type="submit" class="enter">Зарегистрироваться</button>
+    {{ form_close() }}
+
+    <h5 class="info">Продолжая регистрацию вы даете согласие на обработку ваших данных в соответствии с Политикой конфиденциальности</h2>
+    <h5 class="info">Уже есть аккаунт?<h2>
+    <a href="{{ 'login'|page }}"><div class="newEnter">Войти</div></a>
+    {% else %}
+      {% partial 'redirect' url="/" %}
+    {% endif %}
+  </div>
+ 
+</div>

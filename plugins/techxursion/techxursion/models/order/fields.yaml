@@ -1,0 +1,25 @@
+fields:
+    name:
+        label: Name
+        span: auto
+        type: text
+    number:
+        label: Number
+        span: auto
+        type: text
+    email:
+        label: Email
+        span: auto
+        type: text
+    visitors_count:
+        label: 'Visitors count'
+        span: auto
+        type: number
+    park:
+        label: Park
+        span: auto
+        type: text
+    date:
+        label: Date
+        span: auto
+        type: datepicker

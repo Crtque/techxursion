@@ -11,6 +11,8 @@
         border-radius: 12.653px;
         background: #FFF;
         width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
     }
 
     .formcursion_text {
@@ -28,22 +30,83 @@
         padding-left: 98.69px;
     }
 
-    img {
-        padding-left: 84.78px;
+    .whitebox {
+        img {
+            padding-left: 84.78px;
+            max-width: 100%;
+            height: auto;
+        }
     }
 
-    .inputform {
+    @media only screen and (max-width: 768px) {
+        .formcursion__tile {
+            max-width: 60%;
+        }
+    }
+
+    @media only screen and (max-width: 650px) {
+        .formcursion_text {
+            width: 40%;
+        }
+    }
+
+    .formazapisi {
+        position: absolute;
         display: flex;
-        width: 447.922px;
-        height: 582.045px;
         justify-content: center;
-        align-items: center;
-        align-content: center;
+        align-items: flex-end;
+        padding-left: 473px;
+
+    }
+
+    form {
+        display: flex;
         gap: 12.653px;
         flex-shrink: 0;
         flex-wrap: wrap;
+        flex-direction: column;
+        padding-right: 108px;
+        padding-top: 52px;
+
+        input {
+            display: flex;
+            padding: 22.776px 25.306px;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+            border-radius: 12.653px;
+            border: 1.265px solid var(--Text, #666);
+            background: #FFF;
+            color: var(--Text, #666);
+            font-family: Inter;
+            font-size: 20.245px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        .submitbutton {
+            display: flex;
+            padding: 22.776px 25.306px;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-shrink: 0;
+            border-radius: 12.653px;
+            background: blue;
+            color: var(--White, #FFF);
+            font-family: Inter;
+            font-size: 20.245px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+
     }
 }
+
+
 
 .logo {
     display: flex;
@@ -83,6 +146,7 @@
     text-decoration: underline;
     text-underline-offset: 5px;
 }
+
 .signinbutton {
     display: flex;
     padding: 18px 20px;
@@ -174,4 +238,49 @@
 .footer_contacts {
     display: flex;
     flex-direction: column;
+}
+
+.parent {
+    width: 587px;
+    height: 655px;
+    flex-shrink: 0;
+}
+
+.parent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 300px;
+    /* Вы можете настроить максимальную ширину в соответствии с вашим дизайном */
+    margin: 0 auto;
+    /* Центрирование формы по горизонтали */
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+.form-control {
+    border-radius: 10px;
+    border: 1px solid var(--Gray, #D1D1D1);
+    background: #FFF;
+    padding: 8px;
+    /* Подстройте отступы по вашему усмотрению */
+    margin-bottom: 10px;
+    /* Расстояние между инпутами */
+    width: 100%;
+    /* Растянуть инпуты на всю ширину контейнера */
+}
+.enter {
+    border-radius: 10px;
+    background: var(--Blue, #005BFF);
+    color: #FFF;
+    /* Цвет текста на кнопке, чтобы он был виден на фоне */
+    padding: 10px;
+    /* Подстройте отступы по вашему усмотрению */
+    cursor: pointer;
+}
+
+.forgot {
+    margin-bottom: 10px;
 }

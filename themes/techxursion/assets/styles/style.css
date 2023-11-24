@@ -665,8 +665,62 @@
   
     }
   }
+  h1 {
+    font-family: "Disket Mono";
+    color:#005BFF;
+  }
+  input {
+    display: flex;
+    padding: 22.776px 25.306px;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 12.653px;
+    border: 1.265px solid var(--Text, #666);
+    background: #FFF;
+    color: var(--Text, #666);
+    font-family: Inter;
+    font-size: 20.245px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  input[type=submit] {
+    display: flex;
+    padding: 22.776px 25.306px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+    border-radius: 12.653px;
+    background: #005bff;
+    color: var(--White, #FFF);
+    font-family: Inter;
+    font-size: 20.245px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  button {
+    display: flex;
+    padding: 22.776px 25.306px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+    border-radius: 12.653px;
+    background: #005bff;
+    color: var(--White, #FFF);
+    font-family: Inter;
+    font-size: 20.245px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
   h2 {
-    font-family: "Inter";
+    font-family: "Disket Mono";
+    color:#005BFF;
     font-style: normal;
     font-weight: 500;
     font-size: 44px;
