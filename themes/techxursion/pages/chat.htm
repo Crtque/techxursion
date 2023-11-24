@@ -2,12 +2,16 @@ itle = "Чат"
 url = "/chat"
 layout = "default"
 ==
+<?function onStart(){
+    $this['messages'] = \Techxursion\Techxursion\Models\Message::all();
+}?>
+==
 <section class="chat">
 <div class="container">
         <h2><span>Чат</span></h1>
         <div class="chatcontainer">
-        <pre id="messages" style="width: 90%; margin-left: 5%; height: 200px; overflow: scroll">
-        </pre>
+        <pre id="messages" style="width: 90%; margin-left: 5%; height: 200px; overflow: scroll;white-space: pre-line">        {% for msg in messages %}{{msg.user.name ? (msg.user.id == user.id ? "Я" : msg.user.name) : "Аноним "~msg.user_id }}: {{msg.text}}
+{% endfor %}</pre>
         <input type="text" id="messageBox" placeholder="Введите сообщение" 
             style="display: block; width: 90%; margin-bottom: 10px; margin-left: 5%; padding: 10px;" />
             
@@ -35,7 +39,7 @@ layout = "default"
 
                 sendBtn.onclick = function() {
                     if (ws) {
-                        ws.send(messageBox.value);
+                        ws.send('{"message":"'+messageBox.value+'", "user_id":{{user.id ? user.id : 0}}}');
                         showMessage(`Я: ${messageBox.value}`);
                         document.querySelector('#messageBox').value = '';
                     } else {
@@ -45,7 +49,7 @@ layout = "default"
 
                 ws.onmessage = function ({data}) { 
                     var obj = JSON.parse(data);
-                    showMessage(`Аноним ${obj.from_id}: ${obj.message}`);
+                    showMessage(`${obj.name != "" ? "":("Аноним " + obj.from_id)} ${obj.name}: ${obj.message}`);
                 };
 
                 ws.onclose = function() { 

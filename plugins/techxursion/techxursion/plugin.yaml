@@ -17,3 +17,7 @@ navigation:
         label: Заявки
         url: techxursion/techxursion/orders
         icon: icon-life-ring
+    chat:
+        label: Messages
+        url: techxursion/techxursion/messages
+        icon: icon-life-ring

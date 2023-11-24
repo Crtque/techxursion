@@ -22,13 +22,35 @@ class Chat implements MessageComponentInterface {
         $numRecv = count($this->clients) - 1;
         echo sprintf('Connection %d sending message "%s" to %d other connection%s' . "\n"
             , $from->resourceId, $msg, $numRecv, $numRecv == 1 ? '' : 's');
+            $msgArr = json_decode($msg,true);
+            $msgText= $msgArr['message'];
+            $user_id = $msgArr['user_id'] != 0 ? $msgArr['user_id'] : $from->resourceId ;
+            $guzzleClient = new \GuzzleHttp\Client();
+            $headers = [
+                'Content-Type' => 'application/json'
+              ];
+              $body = '{
+                "msg": "'.$msgText.'",
+                "user_id": '.$user_id.',
+                "anon": '.($msgArr['user_id'] != 0 ? "false":"true").'
+              }';
+               print_r($body);
+            $guzzleRequest = new \GuzzleHttp\Psr7\Request('POST', 'https://techxursion.ru/api/message',$headers, $body);
+            $clients = $this->clients;
+            $guzzleRes = $guzzleClient->sendAsync($guzzleRequest)->then(function($response) use ($clients, $from,$user_id,$msgText){
+                $body = $response->getBody();
+                $bodyArr = json_decode($body,true);
+                foreach ($this->clients as $client) {
+                    if ($from !== $client) {
+                      
+                        // The sender is not the receiver, send to each client connected
+                        $client->send(json_encode(["from_id"=> $user_id,"message"=>$msgText,"name"=>$bodyArr["name"]],JSON_UNESCAPED_UNICODE));
+        
+                        
+                    }
+                }
+            })->wait();
 
-        foreach ($this->clients as $client) {
-            if ($from !== $client) {
-                // The sender is not the receiver, send to each client connected
-                $client->send(json_encode(["from_id"=>$from->resourceId,"message"=>$msg],JSON_UNESCAPED_UNICODE));
-            }
-        }
     }
 
     public function onClose(ConnectionInterface $conn) {

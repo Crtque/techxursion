@@ -12,3 +12,9 @@
 1.0.5:
     - 'Created table techxursion_techxursion_orders'
     - builder_table_create_techxursion_techxursion_orders.php
+1.0.6:
+    - 'Created table techxursion_techxursion_messages'
+    - builder_table_create_techxursion_techxursion_messages.php
+1.0.7:
+    - 'Updated table techxursion_techxursion_messages'
+    - builder_table_update_techxursion_techxursion_messages.php
